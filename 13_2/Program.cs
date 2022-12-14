@@ -4,16 +4,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        Thread thread = new Thread(Print);
-        thread.Start();
+        Thread thread1 = new Thread(Print1);
+        Thread thread2 = new Thread(Print2);
 
-        for (int i = 0; i < 5; i++)
+        thread1.Start();
+        thread2.Start();
+
+        void Print1()
         {
-            Console.WriteLine($"Главный поток: {i}");
-            Thread.Sleep(300);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"Первый поток: {i}");
+                Thread.Sleep(300);
+            }
         }
 
-        void Print()
+        void Print2()
         {
             for (int i = 0; i < 5; i++)
             {
